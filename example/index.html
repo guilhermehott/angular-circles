@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>angular-circles example</title>
+    <script src="//rawgit.com/lugolabs/circles/master/circles.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="../angular-circle.js"></script>
+    <script>
+        var demo = angular.module('angular-circle-demo', ['angular-circle']);
+
+        demo.config(['ngCircleSettingsProvider', function (ngCircleSettingsProvider) {
+            ngCircleSettingsProvider.set({
+                colors: ['#f1c40f', '#c0392b']
+            });
+        }]);
+
+        demo.controller('CircleControllerOne', ['$scope', '$interval', function (self, $interval) {
+            var reverse;
+
+            self.value = 10;
+
+            $interval(function () {
+                if (self.value > 90) {
+                    reverse = true;
+                } else if (self.value < 10) {
+                    reverse = false;
+                }
+
+                if (!reverse) {
+                    self.value += 1;
+                } else {
+                    self.value -= 1;
+                }
+            }, 25);
+        }]);
+
+        demo.controller('CircleControllerTwo', ['$scope', '$interval', function (self, $interval) {
+            var reverse;
+
+            self.value = 25;
+
+            $interval(function () {
+                if (self.value > 175) {
+                    reverse = true;
+                } else if (self.value < 25) {
+                    reverse = false;
+                }
+
+                if (!reverse) {
+                    self.value += 25;
+                } else {
+                    self.value -= 25;
+                }
+            }, 1000);
+        }]);
+    </script>
+</head>
+<body ng-app="angular-circle-demo">
+
+    <div ng-circle
+         value="60"></div>
+
+    <div ng-controller="CircleControllerOne">
+        <div ng-circle
+             value="value"
+             width="60"></div>
+    </div>
+    <div ng-controller="CircleControllerTwo">
+        <div ng-circle
+             value="value"
+             max-value="200"
+             colors="['#1abc9c', '#2c3e50']"
+             duration="300"></div>
+    </div>
+</body>
+</html>
