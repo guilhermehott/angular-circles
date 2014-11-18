@@ -9,7 +9,7 @@
         POSSIBLE_SETTINGS,
         RESIZE_WAIT = 150,
         // Variables
-        ngCircle = ng.module('angular-circle', []),
+        ngCircles = ng.module('angular-circles', []),
         iteration = 0,
         // Functions
         debounce;
@@ -50,7 +50,7 @@
         };
     };
 
-    ngCircle.provider('ngCircleSettings', [function () {
+    ngCircles.provider('ngCirclesSettings', [function () {
         var self = this,
             $get,
             set;
@@ -67,17 +67,17 @@
         self.set = set;
     }]);
 
-    ngCircle.directive('ngCircle', ['$window', 'ngCircleSettings', function (
+    ngCircles.directive('ngCircles', ['$window', 'ngCirclesSettings', function (
         $window,
-        ngCircleSettings
+        ngCirclesSettings
     ) {
         var link;
 
         link = function (scope, element) {
             var // Variables
                 self = scope,
-                elementId = 'ng-circle-' + iteration,
-                settings = ngCircleSettings,
+                elementId = 'ng-circles-' + iteration,
+                settings = ngCirclesSettings,
                 attrsSettings = {},
                 circle,
                 // Functions
@@ -101,12 +101,12 @@
             });
 
             if (!self.value || isNaN(self.value)) {
-                throw new Error('ngCircle: Your value does not exists, or is NaN!');
+                throw new Error('ngCircles: Your value does not exists, or is NaN!');
             }
 
             if (settings.width > 100 || settings.width < 1 ||
                     attrsSettings.width > 100 || attrsSettings.width < 1) {
-                throw new Error('ngCircle: The width setting has to be between 1 & 100!');
+                throw new Error('ngCircles: The width setting has to be between 1 & 100!');
             }
 
             circle = Circles.create(ng.extend({}, settings, attrsSettings, {

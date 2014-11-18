@@ -12,13 +12,13 @@ I could solve bugs if I (or you!) find them.
 
 ### How can I use it?
 - Include dependencies to your page (angular, circles.js)
-- Include angular-circle.js
-- Require `angular-circle` as a dependency of your module
-- Add the ng-circle attribute `ng-circle` to any div, and always specify a value
+- Include angular-circles.js
+- Require `angular-circles` as a dependency of your module
+- Add the ng-circles attribute `ng-circles` to any div, and always specify a value
 - You are ready to go! See the example folder if you want to customize things
 (you have two ways to give settings: `module.config()` or HTML attributes)
 
-# Is there a difference with the original?
+### Is there a difference with the original?
 Indeed: **our circles are automatically responsive**.
 
 So **you can't set the radius**, since it's automatically half the width of your div.

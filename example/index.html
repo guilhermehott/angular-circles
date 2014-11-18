@@ -6,9 +6,9 @@
     <script src="//rawgit.com/lugolabs/circles/master/circles.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <!-- During dev, comment: -->
-    <script src="//rawgit.com/ActivKonnect/angular-circles/master/angular-circle.js"></script>
+    <script src="//rawgit.com/ActivKonnect/angular-circles/master/angular-circles.js"></script>
     <!-- During dev, uncomment: -->
-    <!--<script src="../angular-circle.js"></script>-->
+    <!--<script src="../angular-circles.js"></script>-->
     <style>
         body {
             margin: 25px auto;
@@ -23,15 +23,15 @@
         }
     </style>
     <script>
-        var demo = angular.module('angular-circle-demo', ['angular-circle']);
+        var demo = angular.module('angular-circles-demo', ['angular-circles']);
 
-        demo.config(['ngCircleSettingsProvider', function (ngCircleSettingsProvider) {
-            ngCircleSettingsProvider.set({
+        demo.config(['ngCirclesSettingsProvider', function (ngCirclesSettingsProvider) {
+            ngCirclesSettingsProvider.set({
                 colors: ['#f1c40f', '#c0392b']
             });
         }]);
 
-        demo.controller('CircleControllerOne', ['$scope', '$interval', function (self, $interval) {
+        demo.controller('CirclesControllerOne', ['$scope', '$interval', function (self, $interval) {
             var reverse;
 
             self.value = 10;
@@ -51,7 +51,7 @@
             }, 250);
         }]);
 
-        demo.controller('CircleControllerTwo', ['$scope', '$interval', function (self, $interval) {
+        demo.controller('CirclesControllerTwo', ['$scope', '$interval', function (self, $interval) {
             var reverse;
 
             self.value = 25;
@@ -72,22 +72,22 @@
         }]);
     </script>
 </head>
-<body ng-app="angular-circle-demo">
+<body ng-app="angular-circles-demo">
     <div class="container">
-        <div ng-circle
+        <div ng-circles
              value="60"></div>
     </div>
 
     <div class="container"
-         ng-controller="CircleControllerOne">
-        <div ng-circle
+         ng-controller="CirclesControllerOne">
+        <div ng-circles
              value="value"
              width="100"></div>
     </div>
 
     <div class="container"
-         ng-controller="CircleControllerTwo">
-        <div ng-circle
+         ng-controller="CirclesControllerTwo">
+        <div ng-circles
              value="value"
              max-value="200"
              colors="['#1abc9c', '#2c3e50']"
