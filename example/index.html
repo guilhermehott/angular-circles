@@ -5,7 +5,23 @@
     <title>angular-circles example</title>
     <script src="//rawgit.com/lugolabs/circles/master/circles.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="../angular-circle.js"></script>
+    <!-- During dev, comment: -->
+    <script src="//rawgit.com/ActivKonnect/angular-circles/master/angular-circle.js"></script>
+    <!-- During dev, uncomment: -->
+    <!--<script src="../angular-circle.js"></script>-->
+    <style>
+        body {
+            margin: 25px auto;
+            text-align: center;
+        }
+
+        div.container {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            width: 25%;
+        }
+    </style>
     <script>
         var demo = angular.module('angular-circle-demo', ['angular-circle']);
 
@@ -32,7 +48,7 @@
                 } else {
                     self.value -= 1;
                 }
-            }, 25);
+            }, 250);
         }]);
 
         demo.controller('CircleControllerTwo', ['$scope', '$interval', function (self, $interval) {
@@ -57,20 +73,25 @@
     </script>
 </head>
 <body ng-app="angular-circle-demo">
+    <div class="container">
+        <div ng-circle
+             value="60"></div>
+    </div>
 
-    <div ng-circle
-         value="60"></div>
-
-    <div ng-controller="CircleControllerOne">
+    <div class="container"
+         ng-controller="CircleControllerOne">
         <div ng-circle
              value="value"
-             width="60"></div>
+             width="100"></div>
     </div>
-    <div ng-controller="CircleControllerTwo">
+
+    <div class="container"
+         ng-controller="CircleControllerTwo">
         <div ng-circle
              value="value"
              max-value="200"
              colors="['#1abc9c', '#2c3e50']"
+             width="25"
              duration="300"></div>
     </div>
 </body>
