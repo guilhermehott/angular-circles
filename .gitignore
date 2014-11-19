@@ -1,6 +1,9 @@
 # WebStorm stuff
 .idea/
 
+# Deps
+bower_components
+
 # Windows.gitignore
 # https://github.com/github/gitignore/blob/master/Global/Windows.gitignore
 Thumbs.db
