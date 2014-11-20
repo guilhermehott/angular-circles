@@ -14,7 +14,7 @@ I could solve bugs if I (or you!) find them.
 - Include dependencies to your page (angular, circles.js)
 - Include angular-circles.js
 - Require `angular-circles` as a dependency of your module
-- Add the ng-circles attribute `ng-circles` to any div, and always specify a value
+- Add the `ng-circles` attribute to any div, and always specify a value
 - You are ready to go! See the example folder if you want to customize things
 (you have two ways to give settings: `module.config()` or HTML attributes)
 
@@ -29,7 +29,7 @@ Example: Your div is 200px wide. So your radius is 100px. By default, the border
 so yours is 10px. If 300px, radius 150px, border 20px. Etc.
 
 ### Can I see it in action?
-Yup, in examples/index.html \o/
+Yup, in example/index.html \o/
 What, you don't want to DL & run it? I got you covered,
 [this should work online here](http://htmlpreview.github.io/?https://github.com/ActivKonnect/angular-circles/blob/master/example/index.html).
 

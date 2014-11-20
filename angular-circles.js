@@ -34,19 +34,31 @@
 
     // Source: http://modernjavascript.blogspot.fr/2013/08/building-better-debounce.html
     debounce = function (func, wait) {
-        /*globals setTimeout, clearTimeout */
-        var timeout;
+        /*globals setTimeout */
+        var timeout,
+            args,
+            context,
+            timestamp;
 
         return function () {
-            var context = this,
-                args = arguments,
-                later = function () {
+            context = this;
+            args = [].slice.call(arguments, 0);
+            timestamp = new Date();
+
+            var later = function () {
+                var last = (new Date()) - timestamp;
+
+                if (last < wait) {
+                    timeout = setTimeout(later, wait - last);
+                } else {
                     timeout = null;
                     func.apply(context, args);
-                };
+                }
+            };
 
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
+            if (!timeout) {
+                timeout = setTimeout(later, wait);
+            }
         };
     };
 
@@ -86,7 +98,7 @@
             onResize = debounce(function () {
                 var newWidth = element[0].offsetWidth;
                 circle.updateRadius(newWidth / 2);
-                circle.updateWidth((newWidth / 2) * (attrsSettings.width / 100))
+                circle.updateWidth((newWidth / 2) * (attrsSettings.width / 100));
             }, RESIZE_WAIT);
 
             element[0].id = elementId;
@@ -126,7 +138,6 @@
             restrict: 'A',
             scope: {
                 value: '=',
-                radius: '@',
                 maxValue: '@',
                 width: '@',
                 text: '@',
