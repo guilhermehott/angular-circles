@@ -112,7 +112,7 @@
                 }
             });
 
-            if (!self.value || isNaN(self.value)) {
+            if (typeof self.value === 'undefined' || self.value === null || isNaN(self.value)) {
                 throw new Error('ngCircles: Your value does not exists, or is NaN!');
             }
 
