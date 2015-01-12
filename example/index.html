@@ -52,9 +52,14 @@
         }]);
 
         demo.controller('CirclesControllerTwo', ['$scope', '$interval', function (self, $interval) {
-            var reverse;
+            var COLOR_SET_1 = ['#1abc9c', '#2c3e50'],
+                COLOR_SET_2 = ['#2ecc71', '#9b59b6'],
+
+                reverse,
+                currentColorSet;
 
             self.value = 25;
+            self.colors = COLOR_SET_2;
 
             $interval(function () {
                 if (self.value > 175) {
@@ -68,6 +73,14 @@
                 } else {
                     self.value -= 25;
                 }
+
+                if (currentColorSet === COLOR_SET_1) {
+                    currentColorSet = COLOR_SET_2;
+                } else {
+                    currentColorSet = COLOR_SET_1;
+                }
+
+                self.colors = currentColorSet;
             }, 1000);
         }]);
     </script>
@@ -90,7 +103,7 @@
         <div ng-circles
              value="value"
              max-value="200"
-             colors="['#1abc9c', '#2c3e50']"
+             colors="colors"
              width="25"
              duration="300"></div>
     </div>
