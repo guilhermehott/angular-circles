@@ -130,6 +130,10 @@
                 circle.update(newValue);
             });
 
+            self.$watch('colors', function (newColors) {
+                circle.updateColors(newColors);
+            });
+
             onResize();
             ng.element($window).bind('resize', onResize);
         };
