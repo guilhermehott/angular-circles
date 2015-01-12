@@ -11,6 +11,7 @@
         // Variables
         ngCircles = ng.module('angular-circles', []),
         iteration = 0,
+        currentSettings = {},
         // Functions
         debounce;
 
@@ -68,12 +69,14 @@
             set;
 
         $get = function () {
-            return DEFAULT_SETTINGS;
+            return currentSettings;
         };
 
         set = function (settingsObject) {
-            ng.extend(DEFAULT_SETTINGS, settingsObject);
+            ng.extend(currentSettings, settingsObject);
         };
+
+        ng.extend(currentSettings, DEFAULT_SETTINGS);
 
         self.$get = $get;
         self.set = set;
@@ -108,7 +111,7 @@
                 if (self[setting]) {
                     attrsSettings[setting] = self[setting];
                 } else {
-                    attrsSettings[setting] = DEFAULT_SETTINGS[setting];
+                    attrsSettings[setting] = ngCirclesSettings[setting];
                 }
             });
 
