@@ -118,7 +118,7 @@
             iteration += 1;
 
             ng.forEach(POSSIBLE_SETTINGS, function (setting) {
-                if (self[setting]) {
+                if (ng.isDefined(self[setting])) {
                     attrsSettings[setting] = self[setting];
                 } else {
                     attrsSettings[setting] = ngCirclesSettings[setting];
@@ -165,7 +165,7 @@
                 value: '=',
                 maxValue: '@',
                 width: '@',
-                text: '@',
+                text: '=',
                 colors: '=',
                 duration: '@',
                 wrpClass: '@',

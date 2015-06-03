@@ -62,11 +62,18 @@
         }]);
 
         demo.controller('CirclesControllerTwo', ['$scope', '$interval', function (self, $interval) {
+            var // Functions
+                makeText,
 
-            var // Variables
+                // Variables
                 reverse,
                 currentColorSet;
 
+            makeText = function (val) {
+                return val + '€';
+            };
+
+            self.makeText = makeText;
             self.value = 25;
             self.colors = COLOR_SET_2;
 
@@ -104,6 +111,7 @@
          ng-controller="CirclesControllerOne">
         <div ng-circles
              value="value"
+             text="null"
              width="100"></div>
     </div>
 
@@ -114,6 +122,7 @@
              max-value="200"
              colors="colors"
              width="25"
+             text="makeText"
              duration="300"></div>
     </div>
 </body>
