@@ -1,4 +1,4 @@
-/*jslint indent: 4, maxlen: 100 */
+/*jslint indent: 4, maxlen: 80 */
 /*globals angular, Circles */
 
 (function (ng, Circles) {
@@ -8,10 +8,12 @@
         DEFAULT_SETTINGS,
         POSSIBLE_SETTINGS,
         RESIZE_WAIT = 150,
+
         // Variables
         ngCircles = ng.module('angular-circles', []),
         iteration = 0,
         currentSettings = {},
+
         // Functions
         debounce;
 
@@ -30,10 +32,11 @@
     };
 
     POSSIBLE_SETTINGS = [
-        'radius', 'maxValue', 'width', 'text', 'colors', 'duration', 'wrpClass', 'textClass'
+        'radius', 'maxValue', 'width', 'text',
+        'colors', 'duration', 'wrpClass', 'textClass'
     ];
 
-    // Source: http://modernjavascript.blogspot.fr/2013/08/building-better-debounce.html
+    // Source: http://goo.gl/c3mZHP
     debounce = function (func, wait) {
         /*globals setTimeout */
         var timeout,
@@ -95,13 +98,20 @@
                 settings = ngCirclesSettings,
                 attrsSettings = {},
                 circle,
+
                 // Functions
                 onResize;
 
             onResize = debounce(function () {
                 var newWidth = element[0].offsetWidth;
-                circle.updateRadius(newWidth / 2);
-                circle.updateWidth((newWidth / 2) * (attrsSettings.width / 100));
+
+                circle.updateRadius(
+                    newWidth / 2
+                );
+
+                circle.updateWidth(
+                    (newWidth / 2) * (attrsSettings.width / 100)
+                );
             }, RESIZE_WAIT);
 
             element[0].id = elementId;
@@ -115,13 +125,19 @@
                 }
             });
 
-            if (ng.isUndefined(self.value) || self.value === null || isNaN(self.value)) {
-                throw new Error('ngCircles: Your value does not exists, or is NaN!');
+            if (ng.isUndefined(self.value) ||
+                    self.value === null ||
+                    isNaN(self.value)) {
+                throw new Error(
+                    'ngCircles: Your value does not exists, or is NaN!'
+                );
             }
 
             if (settings.width > 100 || settings.width < 1 ||
                     attrsSettings.width > 100 || attrsSettings.width < 1) {
-                throw new Error('ngCircles: The width setting has to be between 1 & 100!');
+                throw new Error(
+                    'ngCircles: The width setting has to be between 1 & 100!'
+                );
             }
 
             circle = Circles.create(ng.extend({}, settings, attrsSettings, {

@@ -23,7 +23,16 @@
         }
     </style>
     <script>
-        var demo = angular.module('angular-circles-demo', ['angular-circles']);
+        var // Constants
+            INTERVAL_BIG = 1000,
+            INTERVAL_SMALL = 250,
+            COLOR_SET_1 = ['#1abc9c', '#2c3e50'],
+            COLOR_SET_2 = ['#2ecc71', '#9b59b6'],
+
+            // Variables
+            demo;
+
+        demo = angular.module('angular-circles-demo', ['angular-circles']);
 
         demo.config(['ngCirclesSettingsProvider', function (ngCirclesSettingsProvider) {
             ngCirclesSettingsProvider.set({
@@ -32,7 +41,8 @@
         }]);
 
         demo.controller('CirclesControllerOne', ['$scope', '$interval', function (self, $interval) {
-            var reverse;
+            var // Variables
+                reverse;
 
             self.value = 10;
 
@@ -48,13 +58,12 @@
                 } else {
                     self.value -= 1;
                 }
-            }, 250);
+            }, INTERVAL_SMALL);
         }]);
 
         demo.controller('CirclesControllerTwo', ['$scope', '$interval', function (self, $interval) {
-            var COLOR_SET_1 = ['#1abc9c', '#2c3e50'],
-                COLOR_SET_2 = ['#2ecc71', '#9b59b6'],
 
+            var // Variables
                 reverse,
                 currentColorSet;
 
@@ -81,7 +90,7 @@
                 }
 
                 self.colors = currentColorSet;
-            }, 1000);
+            }, INTERVAL_BIG);
         }]);
     </script>
 </head>
