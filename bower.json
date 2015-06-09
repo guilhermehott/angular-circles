@@ -1,7 +1,7 @@
 {
   "name": "angular-circles",
   "main": "angular-circles.js",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://github.com/ActivKonnect/angular-circles",
   "authors": [
     "BrunoCartier <bruno.cartier@activkonnect.com>"
