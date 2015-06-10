@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <title>angular-circles example</title>
     <script src="//rawgit.com/lugolabs/circles/master/circles.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
     <!-- During dev, comment: -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
     <script src="//rawgit.com/ActivKonnect/angular-circles/master/angular-circles.js"></script>
     <!-- During dev, uncomment: -->
+    <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>-->
     <!--<script src="../angular-circles.js"></script>-->
     <style>
         body {
@@ -19,7 +20,7 @@
             display: inline-block;
             margin: 0;
             padding: 0;
-            width: 25%;
+            width: 22%;
         }
     </style>
     <script>
@@ -99,6 +100,28 @@
                 self.colors = currentColorSet;
             }, INTERVAL_BIG);
         }]);
+
+        demo.controller('CirclesControllerThree', ['$scope', '$interval', function (self, $interval) {
+            var // Functions
+                makeText,
+
+                // Variables
+                currentUnit = '$';
+
+            makeText = function (val) {
+                return val + currentUnit;
+            };
+
+            self.makeText = makeText;
+
+            $interval(function () {
+                if (currentUnit === '$') {
+                    currentUnit = '£';
+                } else {
+                    currentUnit = '$';
+                }
+            }, INTERVAL_BIG);
+        }]);
     </script>
 </head>
 <body ng-app="angular-circles-demo">
@@ -124,6 +147,13 @@
              width="25"
              text="makeText"
              duration="300"></div>
+    </div>
+
+    <div class="container"
+         ng-controller="CirclesControllerThree">
+        <div ng-circles
+             value="1"
+             text="makeText"></div>
     </div>
 </body>
 </html>

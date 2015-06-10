@@ -7,7 +7,8 @@
     var // Constants
         DEFAULT_SETTINGS,
         POSSIBLE_SETTINGS,
-        RESIZE_WAIT = 150,
+        RESIZE_WAIT = 133,
+        DEBOUNCE_WAIT = 10,
 
         // Variables
         ngCircles = ng.module('angular-circles', []),
@@ -38,7 +39,7 @@
 
     // Source: http://goo.gl/c3mZHP
     debounce = function (func, wait) {
-        /*globals setTimeout */
+        /*global setTimeout */
         var timeout,
             args,
             context,
@@ -100,7 +101,18 @@
                 circle,
 
                 // Functions
+                debouncedCircleUpdate,
                 onResize;
+
+            debouncedCircleUpdate = debounce(function (force) {
+                scope.$apply(function () {
+                    circle.update(self.value);
+
+                    if (force) {
+                        circle.update(true);
+                    }
+                });
+            }, DEBOUNCE_WAIT);
 
             onResize = debounce(function () {
                 var newWidth = element[0].offsetWidth;
@@ -145,9 +157,17 @@
                 value: self.value
             }));
 
-            self.$watch('value', function (newValue) {
-                circle.update(newValue);
-            });
+            if (self.text) {
+                self.$watch(function () {
+                    return self.text(self.value);
+                }, function () {
+                    debouncedCircleUpdate(true);
+                });
+            } else {
+                self.$watch('value', function () {
+                    debouncedCircleUpdate();
+                });
+            }
 
             if (self.colors) {
                 self.$watch('colors', function (newColors) {
