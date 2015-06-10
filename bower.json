@@ -28,6 +28,6 @@
     "example"
   ],
   "dependencies": {
-    "circles": "lugolabs/circles#416d77f5aae97a68a317737e230e4269f0a967ee"
+    "circles": "lugolabs/circles#63b38de34d3e9b1fc5ee992f51f50976090cf019"
   }
 }
