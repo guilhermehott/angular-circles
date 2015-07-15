@@ -29,12 +29,15 @@
         colors: ['#bdc3c7', '#2980b9'],
         duration: 0,
         wrpClass: 'circles-wrp',
-        textClass: 'circles-text'
+        textClass: 'circles-text',
+        valueStrokeClass: 'circles-valueStroke',
+        maxValueStrokeClass: 'circles-maxValueStroke'
     };
 
     POSSIBLE_SETTINGS = [
         'radius', 'maxValue', 'width', 'text',
-        'colors', 'duration', 'wrpClass', 'textClass'
+        'colors', 'duration', 'wrpClass', 'textClass',
+        'valueStrokeClass', 'maxValueStrokeClass'
     ];
 
     // Source: http://goo.gl/c3mZHP
@@ -189,7 +192,9 @@
                 colors: '=',
                 duration: '@',
                 wrpClass: '@',
-                textClass: '@'
+                textClass: '@',
+                valueStrokeClass: '@',
+                maxValueStrokeClass: '@'
             },
             link: link
         };
