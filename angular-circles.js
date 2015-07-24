@@ -162,10 +162,15 @@
 
             if (self.text) {
                 self.$watch(function () {
-                    return self.text(self.value);
-                }, function () {
-                    debouncedCircleUpdate(true);
-                });
+                    return [
+                        self.value,
+                        self.text(self.value)
+                    ];
+                }, function (newReturned, oldReturned) {
+                    if (!ng.equals(newReturned, oldReturned)) {
+                        debouncedCircleUpdate(true);
+                    }
+                }, true);
             } else {
                 self.$watch('value', function () {
                     debouncedCircleUpdate();
