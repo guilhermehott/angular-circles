@@ -185,6 +185,9 @@
 
             onResize();
             ng.element($window).bind('resize', onResize);
+            scope.$on('$destroy', function () {
+              ng.element($window).unbind('resize', onResize);
+            });
         };
 
         return {
