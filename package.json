@@ -3,15 +3,12 @@
   "version": "0.3.4",
   "description": "Simple wrapper to use the circles library in your AngularJS projects",
   "main": "angular-circles.js",
-  "directories": {
-    "example": "example"
-  },
   "scripts": {
     "test": "echo Error: no test specified && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/piggyslasher/angular-circles.git"
+    "url": "git+https://github.com/ActivKonnect/angular-circles.git"
   },
   "keywords": [
     "circles",
@@ -27,12 +24,12 @@
     "directive"
   ],
   "author": "BrunoCartier <bruno.cartier@activkonnect.com>",
-  "license": "ISC",
+  "license": "WTFPL",
   "bugs": {
-    "url": "https://github.com/piggyslasher/angular-circles/issues"
+    "url": "https://github.com/ActivKonnect/angular-circles/issues"
   },
-  "homepage": "https://github.com/piggyslasher/angular-circles#readme",
-  "devDependencies": {
-    "circles": "^0.2.0"
+  "homepage": "https://github.com/ActivKonnect/angular-circles#readme",
+  "dependencies": {
+    "circles": "lugolabs/circles#e03b941fd2724599cb79ac61d50fad75344c699b"
   }
 }
