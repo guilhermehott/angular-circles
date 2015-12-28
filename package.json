@@ -1,0 +1,38 @@
+{
+  "name": "angular-circles",
+  "version": "0.3.4",
+  "description": "Simple wrapper to use the circles library in your AngularJS projects",
+  "main": "angular-circles.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo Error: no test specified && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piggyslasher/angular-circles.git"
+  },
+  "keywords": [
+    "circles",
+    "circle",
+    "graph",
+    "svg",
+    "animation",
+    "responsive",
+    "js",
+    "javascript",
+    "angular",
+    "angularjs",
+    "directive"
+  ],
+  "author": "BrunoCartier <bruno.cartier@activkonnect.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piggyslasher/angular-circles/issues"
+  },
+  "homepage": "https://github.com/piggyslasher/angular-circles#readme",
+  "devDependencies": {
+    "circles": "^0.2.0"
+  }
+}
