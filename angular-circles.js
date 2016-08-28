@@ -118,7 +118,7 @@
             }, DEBOUNCE_WAIT);
 
             onResize = debounce(function () {
-                var newWidth = element[0].offsetWidth;
+                var newWidth = element[0].offsetWidth * 0.6;
 
                 circle.updateRadius(
                     newWidth / 2
