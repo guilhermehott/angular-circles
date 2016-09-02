@@ -118,15 +118,17 @@
             }, DEBOUNCE_WAIT);
 
             onResize = debounce(function () {
-                var newWidth = element[0].offsetWidth * 0.6;
+                if(element[0].offsetWidth){
+                    var newWidth = element[0].offsetWidth * 0.6;
 
-                circle.updateRadius(
-                    newWidth / 2
-                );
+                    circle.updateRadius(
+                        newWidth / 2
+                    );
 
-                circle.updateWidth(
-                    (newWidth / 2) * (attrsSettings.width / 100)
-                );
+                    circle.updateWidth(
+                        (newWidth / 2) * (attrsSettings.width / 100)
+                    );
+                }
             }, RESIZE_WAIT);
 
             element[0].id = elementId;
